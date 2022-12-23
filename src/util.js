@@ -1,3 +1,85 @@
+// A $( document ).ready() block.
+$( document ).ready(function() {
+  
+  const balloonContainer = document.getElementById("balloon-container");
+  
+
+  function random(num) {
+    return Math.floor(Math.random() * num);
+  }
+  
+  function getRandomStyles() {
+    var r = random(255);
+    var g = random(255);
+    var b = random(255);
+    var mt = random(200);
+    var ml = random(50);
+    var dur = random(5) + 5;
+    return `
+    background-color: rgba(${r},${g},${b},0.7);
+    color: rgba(${r},${g},${b},0.7); 
+    box-shadow: inset -7px -3px 10px rgba(${r - 10},${g - 10},${b - 10},0.7);
+    margin: ${mt}px 0 0 ${ml}px;
+    animation: float ${dur}s ease-in infinite
+    `;
+  }
+  
+  function createBalloons(num) {
+    for (var i = num; i > 0; i--) {
+      var balloon = document.createElement("div");
+      balloon.className = "balloon";
+      balloon.style.cssText = getRandomStyles();
+      balloonContainer.append(balloon);
+    }
+  }
+  
+  function removeBalloons() {
+    balloonContainer.style.opacity = 0;
+    setTimeout(() => {
+      balloonContainer.remove()
+    }, 500)
+  }
+  
+  window.addEventListener("load", () => {
+    createBalloons(30)
+    let i = 0;
+let txt = 'It’s worth taking a step back and reflect on just how much has been done over the last 12 months in AI Endpoint Analytics.';
+let speed = 50;
+typeWriter();
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("txtArea").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+  else{
+    $("#txtArea1").show(1000);
+  }
+}
+  });
+  
+  window.addEventListener("click", () => {
+    removeBalloons();
+    playMusic();
+    $(".yearDiv").show();
+    $('.secPages').show();
+  });
+  
+
+
+
+  
+  console.clear();
+
+
+});
+
+function playMusic(){
+  $( document ).mousemove(function( event ) {
+    $("#my_audio").get(0).play();
+  });
+}
+
 new fullpage("#fullpage", {
   sectionsColor: ["#130f40", "#f5f8f7", "#2e1437"],
 
@@ -102,6 +184,7 @@ class FileUpload {
       this.timeout = setTimeout(this.progressDim.bind(this), 500);
       this.el.classList.add(this.doneClass);
       document.getElementById("headerLast").style.display = "none";
+      
     }
   }
   progressUpdateDisplay(clear) {
@@ -158,6 +241,7 @@ class FileUpload {
       }, 200);
     } else if (target.hasAttribute("data-reset")) {
       this.reset();
+ 
     }
   }
 }
@@ -171,11 +255,11 @@ class Utils {
   }
 }
 
-// var myAnimation = anime({
-//   targets: ['.honeycomb-cell'],
-//   translateX: 250,
-//   delay: function(el, i) { return i * 100; },
-//   direction: 'alternate',
-//   loop: true,
-//   easing: 'easeInOutSine'
-// });
+var myAnimation = anime({
+  targets: ['.honeycomb-cell'],
+  scale: 1.05,
+  loop: true,
+  direction: 'alternate',
+  easing: 'easeInOutExpo',
+  delay: 1500
+});
