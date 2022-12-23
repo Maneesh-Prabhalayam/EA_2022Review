@@ -1,6 +1,6 @@
 :root {
   // Scale is using this font-size
-  --font-size: 1.1em;
+  --font-size: 1.2em;
 
   --bg1: #f5f8f7;
   --blue: #00b894;
@@ -11,6 +11,58 @@
   --orange: #e67e22;
   --shadow1: 0 2px 4px #00000026, 0 3px 6px #0000001f;
   --shadow2: 0 2px 6px #00000044, 0 4px 7px #00000022;
+}
+
+
+
+@media only screen and (max-width: 1600px) {
+  :root {
+    // Scale is using this font-size
+    --font-size: 0.9em;
+  }
+  .headerBorder p {
+    font-size: 0.8em !important;
+    margin-top: 0 !important;
+  }
+  .upload__cloud-explode{
+    width:60em !important;
+  }
+  img.honeycomb-cell__image{
+    width: 70px !important;
+  }
+  .eaTitle{
+    font-size: 50px !important;
+  }
+}
+
+@media only screen and (max-height: 900px) {
+  .upload__bubbles {
+    // Scale is using this font-size
+    height:12em !important;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  :root {
+    // Scale is using this font-size
+    --font-size: 0.9em;
+  }
+  .headerBorder p {
+    font-size: 0.8em !important;
+    margin-top: 10px !important;
+  }
+  .upload__cloud-explode{
+    width:60em !important;
+  }
+  img.honeycomb-cell__image{
+    width: 40px !important;
+  }
+  .eaTitle{
+    font-size: 50px !important;
+  }
+  .stmt{
+    padding: 0 10% !important;
+  }
 }
 
 main {
@@ -402,11 +454,11 @@ ul.template {
 .stmt {
   font-size: 18px;
   font-family: "Poppins";
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 .scroll-downs {
-  position: absolute;
+  //position: absolute;
   top: 26em;
   right: 0;
   bottom: 0;
@@ -414,7 +466,8 @@ ul.template {
   margin: auto;
 
   width: 134px;
-  height: 55px;
+  height: 60px;
+  margin-top: 15%;
 }
 .mousey {
   width: 3px;

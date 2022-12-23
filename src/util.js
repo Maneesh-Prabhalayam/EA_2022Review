@@ -155,7 +155,7 @@ class FileUpload {
         if (this.circle) this.circle.style.transitionTimingFunction = "linear";
 
         this.progressLoop();
-      }, 500);
+      }, 200);
     } else if (target.hasAttribute("data-reset")) {
       this.reset();
     }
