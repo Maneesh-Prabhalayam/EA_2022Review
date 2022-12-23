@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@parcel/transformer-less": "^2.8.2",
+    "parcel": "^2.8.2"
+  },
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "fullpage.js": "^4.0.15",
+    "jquery": "^3.6.3"
+  }
+}

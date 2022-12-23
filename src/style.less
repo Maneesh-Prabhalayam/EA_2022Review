@@ -1,0 +1,741 @@
+:root {
+  // Scale is using this font-size
+  --font-size: 1.1em;
+
+  --bg1: #f5f8f7;
+  --blue: #00b894;
+  --green: #fac213;
+  --purple: #e84393;
+  --gold: #3b3b98;
+  --red: #eb4d4b;
+  --orange: #e67e22;
+  --shadow1: 0 2px 4px #00000026, 0 3px 6px #0000001f;
+  --shadow2: 0 2px 6px #00000044, 0 4px 7px #00000022;
+}
+
+main {
+  padding: 2vw;
+}
+
+ul.infoGraphic {
+  // Resize with Ems
+  font-size: var(--font-size);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  li {
+    position: relative;
+    width: 100%;
+    max-width: 25em;
+    background: var(--bg1);
+    border-radius: 0.5em;
+    padding: 0.5em;
+    z-index: 1;
+    transition: all 0.2s;
+    cursor: pointer;
+    list-style: none;
+
+    .numberWrap {
+      position: absolute;
+    }
+    .number {
+      font-family: "maven pro", sans-serif;
+      font-size: 13em;
+      font-weight: 900;
+      width: 0.9em;
+      text-align: center;
+      &.fontColor1 {
+        color: var(--blue);
+      }
+      &.fontColor2 {
+        color: var(--green);
+      }
+      &.fontColor3 {
+        color: var(--purple);
+      }
+      &.fontColor4 {
+        color: var(--gold);
+      }
+      &.fontColor5 {
+        color: var(--red);
+      }
+      &.fontColor6 {
+        color: var(--orange);
+      }
+    }
+    .coverWrap {
+      transform: rotate(130deg);
+      position: absolute;
+      width: 18em;
+      height: 15em;
+      left: -3em;
+      top: -1em;
+      .numberCover {
+        position: absolute;
+        background: var(--bg1);
+        width: 18em;
+        height: 6em;
+        border-radius: 50% 50% 0 0;
+        border-bottom: 3px solid #f5f8f7;
+        transition: all 0.4s;
+
+        &::before {
+          position: absolute;
+          content: "";
+          bottom: 5px;
+          left: 4em;
+          right: 4em;
+          top: 5em;
+          box-shadow: 0 0 30px 17px #48668577;
+          border-radius: 100px / 10px;
+          z-index: -1;
+        }
+        &::after {
+          position: absolute;
+          bottom: 0;
+          content: "";
+          left: -10%;
+          width: 120%;
+          height: 150%;
+          background: radial-gradient(
+            at bottom,
+            #48668533,
+            transparent,
+            transparent
+          );
+          z-index: 1;
+        }
+      }
+    }
+    .content {
+      margin: 8em 3em 1em 7em;
+      position: relative;
+      h2 {
+        font-size: 1.7em;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+      p {
+        line-height: 1.5em;
+      }
+    }
+  }
+}
+
+// I like the curved version too, so I made it a hover for fun.
+ul.infoGraphic li:hover .coverWrap .numberCover {
+  border-radius: 100%;
+}
+
+/////////////////////////////////////
+// Fontawesome Icons
+// List: http://astronautweb.co/snippet/font-awesome/
+
+.icon {
+  position: absolute;
+  font-size: 2rem;
+  text-align: center;
+  top: -1.3em;
+  left: 50%;
+  transform: translatex(-50%);
+  &:before {
+    color: #666;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+  }
+}
+
+.iconCodepen {
+  &:before {
+    content: "\f1cb";
+  }
+}
+
+.iconSocial {
+  &:before {
+    content: "\f08a";
+  }
+}
+
+.iconAirplane {
+  &:before {
+    content: "\f1d9";
+  }
+}
+
+.iconMap {
+  &:before {
+    content: "\f278";
+  }
+}
+
+.iconBulb {
+  &:before {
+    content: "\f0eb";
+  }
+}
+
+.iconPeace {
+  &:before {
+    content: "\f25b";
+  }
+}
+
+// --------------
+// General Layout
+// --------------
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+.section main {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg1);
+  min-height: 100vh;
+  color: #444;
+  display: grid;
+  place-items: center;
+  padding: 3rem 1rem 10em;
+}
+
+///////////////////////
+// Controls
+
+.controls {
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: #d7d7d7a1;
+  padding: 0.5rem 2em;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border: 1px solid #0000004d;
+}
+
+.sliderBox {
+  text-align: center;
+  .range-value {
+    font-weight: 500;
+    font-size: 22px;
+  }
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 1em 0;
+  -webkit-appearance: none;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #00000066;
+  border: 0;
+  border-radius: 1.3px;
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  margin-top: -10px;
+  width: 20px;
+  height: 20px;
+  background: #eee;
+  box-shadow: inset 0px 1px 1px #ffffff66, 0px 1px 3px rgba(0, 0, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #eee;
+}
+input[type="range"]::-moz-range-track {
+  background: #000;
+  border: 0;
+  border-radius: 1.3px;
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #151728;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 13px 0;
+  color: transparent;
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #151728;
+  border: 0;
+  border-radius: 2.6px;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #151728;
+  border: 0;
+  border-radius: 2.6px;
+}
+input[type="range"]::-ms-thumb {
+  width: 25px;
+  height: 25px;
+  background: #151728;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #ffffff;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #ffffff;
+}
+
+.headerBorder {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  color: #fff;
+  background: #130f40;
+  text-align: center;
+  height: 3vh;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.fp-watermark {
+  display: none;
+}
+.section .yearDiv {
+  text-align: center;
+  color: #fff;
+  font-size: 2em;
+  font-family: "Poppins";
+
+  // body {
+  //     background-color: #111;
+  //     font-family: "Bebas Neue", arial;
+  //     margin-top: 4em;
+  //   }
+
+  .heading {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    font-family: "Bebas Neue", arial;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 20vw, 6rem);
+    line-height: 0.9em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -0.01em;
+    padding: 0.3em 0em;
+    background-image: linear-gradient(
+      90deg,
+      #f1c40f 0%,
+      #fff var(--split),
+      #2ecc71 var(--split)
+    );
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+
+  h1:before {
+    content: "";
+    background-color: #8e44ad;
+    width: 3px;
+    height: 100%;
+    top: 0%;
+    left: var(--split);
+    position: absolute;
+  }
+
+  h1 span {
+    font-size: 0.3em;
+    line-height: 2em;
+    letter-spacing: 0.02em;
+    display: block;
+  }
+}
+
+ul.template {
+  width: 500px;
+
+  li {
+    font-size: 14px;
+    font-family: "Poppins";
+    line-height: 1.5em;
+    margin-top: 10px;
+  }
+}
+
+.stmt {
+  font-size: 18px;
+  font-family: "Poppins";
+  padding-top: 10%;
+}
+
+.scroll-downs {
+  position: absolute;
+  top: 26em;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+
+  width: 134px;
+  height: 55px;
+}
+.mousey {
+  width: 3px;
+  padding: 10px 15px;
+  height: 35px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  opacity: 0.75;
+  box-sizing: content-box;
+}
+.scroller {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #fff;
+  animation-name: scroll;
+  animation-duration: 2.2s;
+  animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+  animation-iteration-count: infinite;
+}
+@keyframes scroll {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+}
+
+.txtscroll {
+  margin-left: -15px;
+  font-size: 12px;
+  position: absolute;
+  margin-top: 8px;
+}
+
+/* bubble*/
+
+:root {
+  --hue: 223;
+  --primary1: hsl(var(--hue), 90%, 5%);
+  --primary9: hsl(var(--hue), 90%, 40%);
+  --primary10: hsl(var(--hue), 90%, 50%);
+  --primary11: hsl(var(--hue), 90%, 60%);
+  --primary18: hsl(var(--hue), 90%, 90%);
+  --trans-dur: 0.3s;
+}
+.team button {
+  font: 1em/1.5 "Poppins", sans-serif;
+  background: #6f95ff;
+  border-radius: 10px;
+  border: 1px solid #333;
+  color: #fff;
+  max-width: 17em;
+  cursor: pointer;
+}
+.team {
+  font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
+  background-color: #2e1437;
+  color: var(--primary1);
+  height: 100vh;
+  transition: background-color var(--trans-dur), color var(--trans-dur);
+}
+.team main {
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  height: 100%;
+  //min-height: 24.5em;
+  background-color: #2e1437;
+  color: #fff;
+}
+.upload,
+.upload__finish {
+  max-width: 75em;
+}
+.upload {
+  padding: 1.5em;
+  text-align: center;
+  width: 100%;
+}
+.upload__button {
+  background-color: var(--primary10);
+  border-radius: 0.2em;
+  color: hsl(0, 0%, 100%);
+  padding: 0.75em 1.5em;
+  width: 100%;
+  transition: background-color 0.15s ease-in-out;
+}
+.upload__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.upload__button:focus {
+  outline: transparent;
+}
+.upload__button:not(:disabled):focus-visible,
+.upload__button:not(:disabled):hover {
+  background-color: var(--primary9);
+}
+.upload__bubbles {
+  margin: 0 auto 3em auto;
+  position: relative;
+  height: 8em;
+  width: 8em;
+  z-index: 1;
+}
+.upload__bubble {
+  --dur: 3s; /* to be overridden by JavaScript */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2em;
+  height: 2em;
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+}
+.upload__bubble:before {
+  background-color: var(--primary11);
+  border-radius: 50%;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.upload__check {
+  display: block;
+  margin: 0 auto 3em auto;
+  width: 8em;
+  height: 8em;
+}
+.upload__cloud-explode,
+.upload__cloud-left,
+.upload__cloud-middle,
+.upload__cloud-right {
+  background-color: hsl(0, 0%, 100%);
+  position: absolute;
+}
+.upload__cloud-explode,
+.upload__cloud-middle {
+  border-radius: 50%;
+}
+.upload__cloud-explode {
+  display: none;
+  bottom: 0;
+  left: 50%;
+  width: 69em;
+  height: 69em;
+  transform: translate(-50%, 1em) scale(0);
+  transform-origin: 50% 100%;
+  z-index: 1;
+}
+.upload__cloud-left,
+.upload__cloud-middle,
+.upload__cloud-right {
+  bottom: 0;
+}
+.upload__cloud-left,
+.upload__cloud-right {
+  width: 6em;
+}
+.upload__cloud-left {
+  border-radius: 2.5em 0 0 2.5em;
+  right: 50%;
+  height: 5em;
+}
+.upload__cloud-middle {
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  width: 13em;
+  height: 13em;
+  transform: translate(-50%, 0) scale(0.6);
+  transform-origin: 50% 100%;
+  z-index: 2;
+}
+.upload__cloud-right {
+  border-radius: 0 3em 3em 0;
+  left: 50%;
+  height: 6em;
+}
+.upload__feedback {
+  color: hsl(var(--hue), 10%, 5%);
+  margin-bottom: 4.5em;
+}
+.upload__feedback,
+.upload__feedback + .upload__button {
+  opacity: 0;
+  transform: translateY(100%);
+}
+.upload__finish {
+  margin: 25% auto;
+  padding: 1.5em;
+}
+.upload__progress {
+  opacity: 0;
+  color: #fff;
+}
+.upload__progress {
+  font-size: 3em;
+  margin-bottom: 3rem;
+  min-height: 4.5rem;
+  transform: translateY(25%);
+}
+/* running state */
+.upload--running .upload__cloud-left,
+.upload--running .upload__cloud-middle,
+.upload--running .upload__cloud-right {
+  transition: all 0.5s ease-in-out;
+}
+.upload--running .upload__cloud-left {
+  transform: translateX(2.5em);
+}
+.upload--running .upload__cloud-middle {
+  transform: translate(-50%, 1em) scale(1);
+}
+.upload--running .upload__cloud-right {
+  transform: translateX(-2.5em);
+}
+.upload--running .upload__bubble:before {
+  animation: rise var(--dur) linear forwards;
+}
+.upload--running .upload__progress {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+}
+/* done state */
+.upload--done .upload__cloud-explode {
+  animation: expand 1s 0.5s ease-in-out forwards;
+  display: flex;
+}
+.upload--done .upload__cloud-middle {
+  animation: slideUp 1.5s 0.5s ease-in-out forwards;
+}
+.upload--done .upload__feedback,
+.upload--done .upload__feedback + .upload__button {
+  animation: fadeSlideUp 0.5s 1.25s ease-in-out forwards;
+}
+.upload--done .upload__feedback + .upload__button {
+  animation-delay: 1.4s;
+}
+.upload--done .upload__check-ring,
+.upload--done .upload__check-line {
+  animation: strokeIn 0.5s 1.25s ease-in-out forwards;
+}
+
+/* Animations */
+@keyframes expand {
+  from {
+    transform: translate(-50%, 1em) scale(0.3333); /* 23/69 */
+  }
+  to {
+    transform: translate(-50%, 37.25em) scale(1);
+  }
+}
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes rise {
+  to {
+    transform: translateY(-25em);
+  }
+}
+@keyframes strokeIn {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 1em);
+  }
+  to {
+    transform: translate(-50%, -23em);
+  }
+}
+
+/*----*/
+
+img.honeycomb-cell__image {
+  width: 100px;
+  border-radius: 60px;
+  border: 1px solid #5f0d3b;
+}
+
+div.honeycomb-cell {
+  display: inline-block;
+  border: 1px solid #5f0d3b;
+  border-radius: 100px;
+  padding: 15px;
+  background: #e2ddd9;
+  margin: 6px;
+}
+
+div.honeycomb-cell h4 {
+  color: #742365;
+  margin: 0;
+  font-family: "Poppins";
+  font-size: 16px;
+}
+
+h3 {
+  font-family: "Poppins";
+}
+
+.eaTitle {
+  font-size: 60px;
+  font-weight: 600;
+  background-image: linear-gradient(45deg, #553c9a, #ee4b2b);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
