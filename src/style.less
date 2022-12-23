@@ -14,8 +14,27 @@
 }
 
 
+@media only screen and (max-width: 1299px) and (min-width: 901px) {
+  :root {
+    // Scale is using this font-size
+    --font-size: 0.8em;
+  }
+  .headerBorder p {
+    font-size: 0.8em !important;
+    margin-top: 0 !important;
+  }
+  .upload__cloud-explode{
+    width:60em !important;
+  }
+  img.honeycomb-cell__image{
+    width: 70px !important;
+  }
+  .eaTitle{
+    font-size: 50px !important;
+  }
+}
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1600px) and (min-width: 1300px) {
   :root {
     // Scale is using this font-size
     --font-size: 0.9em;
@@ -39,6 +58,19 @@
   .upload__bubbles {
     // Scale is using this font-size
     height:12em !important;
+  }
+  .scroll-downs{
+    margin-top: 9% !important;
+  }
+}
+
+@media only screen and (max-height: 800px) {
+  .upload__bubbles {
+    // Scale is using this font-size
+    height:12em !important;
+  }
+  .scroll-downs{
+    margin-top: 1% !important;
   }
 }
 
