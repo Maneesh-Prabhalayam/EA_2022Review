@@ -56,14 +56,28 @@ function typeWriter() {
     $("#txtArea1").show(1000);
   }
 }
-  });
-  
+
+
+var width = $(window).width(); 
+var height = $(window).height(); 
+
+if ((width >= 1000  ) && (height>=760)) {
   window.addEventListener("click", () => {
     removeBalloons();
     playMusic();
     $(".yearDiv").show();
     $('.secPages').show();
   });
+}
+else {
+  $("#txtArea1").html("For better user experience, please use the screen resolution higher or equal to 1024 x 768");
+}
+
+
+
+  });
+  
+
   
 
 
